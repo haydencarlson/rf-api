@@ -5,9 +5,11 @@ class ChatChannel < ApplicationCable::Channel
 
   def unsubscribed; end
 
-  def create(opts)
+  def receive(payload)
     ChatMessage.create(
-      content: opts.fetch('content')
+      content: payload['message'],
+      user_id: current_user.id
     )
   end
+
 end
