@@ -5,7 +5,7 @@ class ChatChannel < ApplicationCable::Channel
     ## Sends initial messages to front end
     initial_messages = ChatMessage.limit(50).order(created_at: :desc).to_a
     initial_messages = initial_messages.map do |message|
-      message.as_json.merge(email: message.user.email)
+      message.as_json.merge(username: message.user.nickname)
     end
     ActionCable
       .server
