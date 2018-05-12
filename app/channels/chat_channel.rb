@@ -1,7 +1,6 @@
 class ChatChannel < ApplicationCable::Channel
   def subscribed
     stream_from 'chat_channel'
-
     ## Sends initial messages to front end
     initial_messages = ChatMessage.limit(50).order(created_at: :desc).to_a
     initial_messages = initial_messages.map do |message|
@@ -22,5 +21,4 @@ class ChatChannel < ApplicationCable::Channel
       user_id: current_user.id
     )
   end
-
 end
