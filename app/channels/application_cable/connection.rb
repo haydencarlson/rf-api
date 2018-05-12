@@ -10,7 +10,7 @@ module ApplicationCable
       def find_verified_user
         params = request.params
         uid = params[:uid]
-        token = params[:atoken]
+        token = params[:accessToken]
         client_id = params[:client]
         user = User.find_by_uid(uid)
 

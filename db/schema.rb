@@ -45,8 +45,7 @@ ActiveRecord::Schema.define(version: 20180412045030) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
-    t.integer "index"
-    t.string "description"
+    t.integer "sort_order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -62,10 +61,12 @@ ActiveRecord::Schema.define(version: 20180412045030) do
   create_table "forums", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.string "description"
+    t.bigint "category_id", null: false
     t.string "image_url"
     t.boolean "disabled"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_forums_on_category_id"
   end
 
   create_table "subforums", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

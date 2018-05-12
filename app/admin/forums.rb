@@ -11,5 +11,5 @@ ActiveAdmin.register Forum do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-
+  permit_params :category_id, :name, :description, :image_url, :disabled
 end

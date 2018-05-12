@@ -12,4 +12,5 @@ ActiveAdmin.register Subforum do
 #   permitted
 # end
 
+  permit_params :forum_id, :name
 end
